@@ -4,6 +4,7 @@ import HabitTracker from '../components/HabitTracker';
 export default function Home() {
   const YOUR_NAME = "Matt"
   const YEAR = "2022";
+  const URL = "https://docs.google.com/spreadsheets/d/105x8M9bQkd1vFfOu33SnieelhjO8s2G7JhM_maVkm5k/edit?usp=sharing";
 
   return (
     <div className="container">
@@ -17,7 +18,7 @@ export default function Home() {
           Hey! I'm {YOUR_NAME}<span>👋</span>
         </h1>
 
-        <HabitTracker year={YEAR} url="https://docs.google.com/spreadsheets/d/105x8M9bQkd1vFfOu33SnieelhjO8s2G7JhM_maVkm5k/edit?usp=sharing" />
+        <HabitTracker year={YEAR} url={URL} />
       </main>
 
       <footer>

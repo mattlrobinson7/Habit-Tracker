@@ -44,7 +44,7 @@ export default function ProgressBar(props) {
                 .box .percent svg circle:nth-child(1)
                 {
                   stroke-dashoffset:0;
-                  stroke:#f3f3f3;
+                  stroke:#e3dfdf;
                   transform: translate(5px, 5px);
                 }
                 .box .percent svg circle:nth-child(2)

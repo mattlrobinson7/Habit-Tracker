@@ -31,7 +31,7 @@ export default function SingleHabit(props) {
                             return (<span className="day not-reached-day" key={i} />);
                         }
                         if (i > 2) {
-                            if (col === '.') {
+                            if (col === '.' || col === '*' || col === 'x') {
                                 return (<span className="day" style={{ backgroundColor: completedColors[index - 2] }} key={i} />);
                             } else if (col === '') {
                                 return (<span className="day" style={{ backgroundColor: nonCompletedColors[index - 2] }} key={i} />);
