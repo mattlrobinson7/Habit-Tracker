@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { createPortal } from 'react-dom';
+import ProgressBar from './ProgressBar';
 
 export default function SingleHabit(props) {
     const data = props.data;
@@ -11,7 +11,7 @@ export default function SingleHabit(props) {
     var oneDay = 1000 * 60 * 60 * 24;
     var day = Math.floor(diff / oneDay);
 
-    var progressWidth = (parseInt(data[1]) * 100) / parseInt(data[0]);
+    var progressWidth = Math.round((parseInt(data[1]) * 100) / parseInt(data[0]));
 
     var completedColors = ["#5a8737", "#277da1", "#f8961e", "#f94144", "#06d6a0", "#f9844a", "#4d908e"];
     var nonCompletedColors = ["#c8e0b6", "#7fb3c9", "#edbd82", "#f09091", "#93c9bb", "#d99d80", "#95e6e3"];
@@ -19,16 +19,9 @@ export default function SingleHabit(props) {
     return (
         <>
             <div className="goal">
-                <h2 className="goal-title">{data[2]}</h2>
-
-                <div className='progress-container'>
-                    
-                <div className="goal-current">Complete: {data[1]}</div>
-                    <div className="progress-bar">
-                        <div className="progress-complete" style={{ width: progressWidth + "%" }}></div>
-                    </div>
-                    
-                    <div className="goal-amount">Goal: {data[0]}</div>
+                <div className="header">
+                    <h2 className="goal-title">{data[2]}</h2>
+                    <ProgressBar percent={progressWidth} complete={data[1]} goal={data[0]} />
                 </div>
 
 
@@ -52,32 +45,9 @@ export default function SingleHabit(props) {
                     clear: both;
                 }
 
-                .goal-current {
-                    float: left;
-                    width: 10%;
-                }
-
-                .progress-bar {
-                    width: 80%;
-                    background-color: grey;
-                    margin-bottom: 10px;
-                    float: left;
-                }
-
-                .goal-amount {
-                    float: left;
-                    width: 10%;
-                }
-
-                  
-                .progress-complete {
-                    height: 20px;
-                    background-color: green;
-                }
-
                 .goal {
                     clear: both;
-                    width: 1200px;
+                    width: 1000px;
                     background-color: #edf8f5;
                     border-radius: 5px;
                     padding: 10px;
@@ -85,11 +55,21 @@ export default function SingleHabit(props) {
                     font-size: 16px;
                     height: 300px;
                     text-align: center;
+                    display: flex;
+                    justify-content: center;
+                    overflow: auto;
+                }
+
+                .goal-title {
+                    float: left;
+                    width: 200px;
+                    margin-right: 20px;
+                    margin-bottom: 0px;
                 }
 
                 .day {
-                    height: 20px;
-                    width: 20px;
+                    height: 21px;
+                    width: 21px;
                     float: left;
                     margin-right: 2px;
                     margin-bottom: 2px;
@@ -98,6 +78,36 @@ export default function SingleHabit(props) {
                 .not-reached-day {
                     background-color: #edede9;
                 }
+
+                @media only screen and (max-width: 800px) {
+                    .goal {
+                      width: 90%;
+                      height: auto;
+                      display: block;
+                      background-color: #edf8f5;
+                      border-radius: 5px;
+                      padding: 10px;
+                      margin: 5%;
+                      font-size: 16px;
+                      overflow: auto;
+                    }
+                    
+                    .goal-title {
+                        float: left;
+                        margin-bottom: 0px;
+                        margin-top: 65px;
+                        width: 45%;
+                        margin-right: 0px;
+                    }
+
+                    .chart {
+                        float: left;
+                    }
+
+                    .box {
+                        margin-left: -5%;
+                    }
+                  }
             `}</style>
         </>
     );

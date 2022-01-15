@@ -50,7 +50,7 @@ export default function Home() {
         }
 
         footer {
-          width: 100%;
+          width: 120%;
           height: 100px;
           border-top: 1px solid #eaeaea;
           display: flex;
@@ -157,12 +157,7 @@ export default function Home() {
           background-color: #c9ada7;
         }
 
-        @media (max-width: 600px) {
-          .grid {
-            width: 100%;
-            flex-direction: column;
-          }
-        }
+       
       `}</style>
 
       <style jsx global>{`
